@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
   <label for="dob-dd"
     >Date of joining: {{ day + 1 }}.{{ month }}.{{ year }}
   </label>
   <form>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col">
           <app-dropdown
@@ -34,29 +34,36 @@
       </div>
     </div>
 
-    <div class="container">
-      <label for="role">Role: </label>
-      <app-dropdown
-        class="role"
-        name="role"
-        [(ngModel)]="role"
-        [dropdownValues]="roles"
-        (ngModelChange)="changeRole()"
-        order="DESC"
-      ></app-dropdown>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <label for="role">Role: </label>
+          <app-dropdown
+            class="role"
+            name="role"
+            [(ngModel)]="role"
+            [dropdownValues]="roles"
+            (ngModelChange)="changeRole()"
+            order="DESC"
+          ></app-dropdown>
+        </div>
+        <div class="col">
+          <label for="experience">Experience</label>
+          <div>
+            <label class="m-1" *ngFor="let exp of experiences; let i = index">
+              <input
+                type="radio"
+                name="experience"
+                [value]="i"
+                [(ngModel)]="experience"
+                (ngModelChange)="changeEcperience()"
+              />
+              {{ exp.min }}-{{ exp.max }}
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <label for="experience">Experience</label>
-    <label class="m-1" *ngFor="let exp of experiences; let i = index">
-      <input
-        type="radio"
-        name="experience"
-        [value]="i"
-        [(ngModel)]="experience"
-        (ngModelChange)="changeEcperience()"
-      />
-      {{ exp.min }}-{{ exp.max }}
-    </label>
   </form>
 </div>
 
