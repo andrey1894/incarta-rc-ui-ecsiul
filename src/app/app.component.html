@@ -1,0 +1,97 @@
+<div class="container">
+  <label for="dob-dd"
+    >Date of joining: {{ day + 1 }}.{{ month }}.{{ year }}
+  </label>
+  <form>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <app-dropdown
+            class="dob-dd"
+            name="day"
+            [(ngModel)]="day"
+            [dropdownValues]="days"
+          ></app-dropdown>
+        </div>
+        <div class="col">
+          <app-dropdown
+            class="dob-mmm"
+            name="month"
+            [(ngModel)]="month"
+            [dropdownValues]="months"
+            (ngModelChange)="changeMonth()"
+          ></app-dropdown>
+        </div>
+        <div class="col">
+          <app-dropdown
+            class="dob-yyyy"
+            name="year"
+            [(ngModel)]="year"
+            [dropdownValues]="years"
+            (ngModelChange)="changeYear()"
+          ></app-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <label for="role">Role: </label>
+      <app-dropdown
+        class="role"
+        name="role"
+        [(ngModel)]="role"
+        [dropdownValues]="roles"
+        (ngModelChange)="changeRole()"
+        order="DESC"
+      ></app-dropdown>
+    </div>
+
+    <label for="experience">Experience</label>
+    <label class="m-1" *ngFor="let exp of experiences; let i = index">
+      <input
+        type="radio"
+        name="experience"
+        [value]="i"
+        [(ngModel)]="experience"
+        (ngModelChange)="changeEcperience()"
+      />
+      {{ exp.min }}-{{ exp.max }}
+    </label>
+  </form>
+</div>
+
+<hr />
+
+<pre>
+  Following are the # ACCEPTANCE CRITERIA
+
+  1. Fix date of joining (DOJ) dropdown issues:
+
+    - Date options should be 1 to 31.
+
+    - Month options should be January to December.
+
+    - Year options should be 1992 to 2022.
+
+  2. Create reusable component for dropdown which accepts value as string and number.
+
+    - Use the reusable dropdown for DOJ and Role fields.
+
+  3. Role dropdown option should be text, but selected option value should be a number.
+
+    - Role dropdown options should be in the order:
+
+      [CEO(25), Director(20), Manager(15), Lead Developer(10), Senior Developer(5), Developer(0)]
+
+    - Role dropdown default selected should be 'Developer'.
+
+  4. Change 'Experience' from radio buttons to slider.
+
+    - Based on selection of Role from dropdown, change the slider value to the selected value of Role.
+
+  5. Import bootstrap CSS and create a 100% width column for DOJ. Split the Role and Experience into 50% width of screen each. (Nice to Have)
+
+  After forking the code you’ll have ~1hr 30min to complete this exercise. Once you’re done reply to the same email with your forked link.
+
+  Good luck!
+</pre>

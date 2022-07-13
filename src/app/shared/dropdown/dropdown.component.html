@@ -1,0 +1,14 @@
+<select
+  id="disabledSelect"
+  class="form-select"
+  [(ngModel)]="selectedValue"
+  (change)="change()"
+>
+  <option
+    *ngFor="let dropdownValue of dropdownValues$ | async"
+    [value]="dropdownValue.value"
+    [disabled]="dropdownValue.disabled"
+  >
+    {{ dropdownValue.title }}
+  </option>
+</select>
